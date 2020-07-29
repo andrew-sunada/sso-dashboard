@@ -44,13 +44,11 @@
     "declaration-block-semicolon-space-before": "never",
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "declaration-block-no-shorthand-property-overrides": true,
-    "declaration-block-no-duplicate-properties": true,
 
     "block-no-empty": true,
     "block-closing-brace-empty-line-before": "never",
     "block-closing-brace-newline-after": "always",
     "block-closing-brace-newline-before": "always-multi-line",
-    "block-closing-brace-space-before": "always-single-line",
     "block-opening-brace-newline-after": "always-multi-line",
     "block-opening-brace-space-after": "always-single-line",
     "block-opening-brace-space-before": "always",
@@ -67,8 +65,6 @@
     "selector-type-case": "lower",
     "selector-type-no-unknown": true,
     "selector-max-empty-lines": 0,
-
-    "rule-empty-line-before": "always-multi-line",
 
     "media-feature-name-case": "lower",
     "media-feature-name-no-unknown": true,

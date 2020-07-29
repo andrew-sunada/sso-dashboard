@@ -119,20 +119,19 @@
 {% endblock %}
 
 {% block content %}
-  <div id="app-grid" class="mui-row app-grid">
-    <ul>
-    {% for app in apps %}
-      <li>
-        <a href="{{ app['application']['url'] }}" data-id="{{ app['application']['name'] }}" class="app-tile" target="_blank">
-          <div class="mui--text-center app-logo">
-            <img src="{{ config.CDN }}/images/{{ app['application']['logo'] }}" role="presentation" alt="">
-          </div>
-          <p class="mui--text-center app-name">{{ app['application']['name'] }}</p>
-        </a>
-      </li>
-    {% endfor %}
-    </ul>
-  </div>
+  <section class="app-grid">
+   <template id="application-template">
+     <li class="app-list__item">
+      <a class="app-tile" target="_blank">
+        <img class="app-tile__logo" role="presentation" >
+      </a>
+      <p class="app-tile__name"></p>
+     </li>
+    
+   </template>
+   <ul class="app-list">
+   </ul>
+  </section>
 {% endblock %}
 
 <script>

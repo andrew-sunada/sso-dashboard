@@ -2,93 +2,119 @@
 <html>
   <head>
     <title>Mozilla SSO Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/static/lib/dnt-helper/js/dnt-helper.js"></script>
     <script src="/static/js/ga.js"></script>
-    <link href="/static/lib/mui/packages/cdn/css/mui.min.css" rel="stylesheet">
-    {% assets "css_all" %}
-      <link href="{{ ASSET_URL }}" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+    <link
+      href="/static/lib/mui/packages/cdn/css/mui.min.css"
+      rel="stylesheet"
+    />
+    {% assets "css_base" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" />
     {% endassets %}
-    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <script src="/static/factor-ui/moz-components.js"></script>
+    {% assets "js_dashboard" %}
+    <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    <script>
+      window._RawSSODashboardApps = JSON.parse('{{apps|tojson}}');
+      window._SSOLogoPrefix = '{{ config.CDN }}/images/';
+      console.log("found apps: ", window._RawSSODashboardApps);
+    </script>
   </head>
   <body>
-
     {% block appbar %}
-      <div class="mui-appbar">
-        <div class="mui-col-sm-2 mui-col-xs-5 mui--text-right">
-          <div class="brand">
-            <a href="/">
-               <img src="/static/img/mozilla.svg" class="logo logo-large mui--hidden-md mui--hidden-sm">
-            </a>
-            <a href="/">
-              <img src="/static/img/mozilla-m.svg" class="logo logo-small mui--hidden-lg mui--hidden-xl mui--hidden-xs">
-            </a>
-          </div>
-        </div>
-        <div class="mui-col-sm-8 mui--hidden-xs">
-          {% block search %}{% endblock %}
-        </div>
-        <div class="mui-col-sm-2 mui-col-xs-7 mui--text-left">
-          {% block menu %}{% endblock %}
-          {% block search_button %}{% endblock %}
-        </div>
+    <moz-components-factor-header search-bar-label="Search for an app by name">
+      <div slot="styles">
+        {% assets "css_dashboard" %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet" />
+        {% endassets %}
       </div>
-    {% endblock %}
-
-    {% block search_mobile %}{% endblock %}
-
-    {% block messages %}{% endblock %}
+        <a class="sso-logo" slot="logo"href="/">
+          <img
+            src="/static/img/mozilla.svg"
+            class="sso-logo__image"
+          />
+        </a>
+    </moz-components-factor-header>
+    </div>
+    {% endblock %} {% block search_mobile %}{% endblock %} {% block messages
+    %}{% endblock %}
 
     <div class="content {% block content_class %}{% endblock %}">
       <div class="mui-container">
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
       </div>
     </div>
 
-    {% block user_menu %}{% endblock %}
-
-    {% block footer %}
-      <footer>
-        <div class="mui-container mui--text-center">
-          <div class="icon-container">
-            <div class="icon">
-              <img class="footer-icon" src="/static/img/email.svg">
-              <a target="_blank" href="https://mozilla.service-now.com/sp?id=sc_cat_item&sys_id=ca46b2794fcc2200f004ef6d0210c77c" target="_blank">Need Help?</a>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon">
-              <img class="footer-icon" src="/static/img/feedback.svg">
-              <a target="_blank" href="https://discourse.mozilla.org/c/iam/dashboard" target="_blank">Feedback</a>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon">
-              <img class="footer-icon" src="/static/img/github.svg">
-              <a target="_blank" href="https://github.com/mozilla-iam/sso-dashboard" target="_blank">Contribute</a>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon">
-              <img class="footer-icon" src="/static/img/legal.svg">
-              <a target="_blank" href="https://www.mozilla.org/en-US/about/legal/" target="_blank">Legal</a>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon">
-              <img class="footer-icon" src="/static/img/privacy.svg">
-              <a target="_blank" href="https://www.mozilla.org/en-US/privacy/websites/" target="_blank">Privacy</a>
-            </div>
+    {% block user_menu %}{% endblock %} {% block footer %}
+    <footer>
+      <div class="mui-container mui--text-center">
+        <div class="icon-container">
+          <div class="icon">
+            <img class="footer-icon" src="/static/img/email.svg" />
+            <a
+              target="_blank"
+              href="https://mozilla.service-now.com/sp?id=sc_cat_item&sys_id=ca46b2794fcc2200f004ef6d0210c77c"
+              target="_blank"
+              >Need Help?</a
+            >
           </div>
         </div>
-      </footer>
+        <div class="icon-container">
+          <div class="icon">
+            <img class="footer-icon" src="/static/img/feedback.svg" />
+            <a
+              target="_blank"
+              href="https://discourse.mozilla.org/c/iam/dashboard"
+              target="_blank"
+              >Feedback</a
+            >
+          </div>
+        </div>
+        <div class="icon-container">
+          <div class="icon">
+            <img class="footer-icon" src="/static/img/github.svg" />
+            <a
+              target="_blank"
+              href="https://github.com/mozilla-iam/sso-dashboard"
+              target="_blank"
+              >Contribute</a
+            >
+          </div>
+        </div>
+        <div class="icon-container">
+          <div class="icon">
+            <img class="footer-icon" src="/static/img/legal.svg" />
+            <a
+              target="_blank"
+              href="https://www.mozilla.org/en-US/about/legal/"
+              target="_blank"
+              >Legal</a
+            >
+          </div>
+        </div>
+        <div class="icon-container">
+          <div class="icon">
+            <img class="footer-icon" src="/static/img/privacy.svg" />
+            <a
+              target="_blank"
+              href="https://www.mozilla.org/en-US/privacy/websites/"
+              target="_blank"
+              >Privacy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
     {% endblock %}
 
     <script src="/static/lib/jquery/dist/jquery.min.js"></script>
     {% assets "js_all" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-    {% block extra_js %}{% endblock %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %} {% block extra_js %}{% endblock %}
   </body>
 </html>

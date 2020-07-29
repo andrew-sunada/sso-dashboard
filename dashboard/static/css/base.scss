@@ -1,33 +1,33 @@
 @font-face {
-    font-family: 'Open Sans';
-    font-weight: normal;
-    font-style: normal;
-    src: url('../../fonts/opensans-regular.woff2') format('woff2'),
-        url('../../fonts/opensans-regular.woff') format('woff');
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../../fonts/opensans-regular.woff2') format('woff2'),
+    url('../../fonts/opensans-regular.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    font-weight: bold;
-    font-style: normal;
-    src: url('../../fonts/opensans-bold.woff2') format('woff2'),
-        url('../../fonts/opensans-bold.woff') format('woff');
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-style: normal;
+  src: url('../../fonts/opensans-bold.woff2') format('woff2'),
+    url('../../fonts/opensans-bold.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    font-weight: normal;
-    font-style: italic;
-    src: url('../../fonts/opensans-italic.woff2') format('woff2'),
-        url('../../fonts/opensans-italic.woff') format('woff');
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-style: italic;
+  src: url('../../fonts/opensans-italic.woff2') format('woff2'),
+    url('../../fonts/opensans-italic.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    font-weight: bold;
-    font-style: italic;
-    src: url('../../fonts/opensans-bolditalic.woff2') format('woff2'),
-        url('../../fonts/opensans-bolditalic.woff') format('woff');
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-style: italic;
+  src: url('../../fonts/opensans-bolditalic.woff2') format('woff2'),
+    url('../../fonts/opensans-bolditalic.woff') format('woff');
 }
 
 $gray: #808080;
@@ -49,1355 +49,1330 @@ $alert-success: #14c887;
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    color: $gray;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.4;
-    font-family: 'Open Sans', sans-serif;
-    letter-spacing: 0.03em;
+  color: $gray;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.03em;
 }
 
 .visually-hidden {
-    position: absolute;
-    left: -9999em;
+  position: absolute;
+  left: -9999em;
 }
 
 .yellow-border {
-    border-color: $yellow;
+  border-color: $yellow;
 }
 
 .mui-appbar {
-    background-color: white;
-    color: black;
-    text-align: center;
-    border-bottom: 1px solid $lightgray;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-bottom: 1px solid $lightgray;
+  height: $appbar-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  .mui-col-sm-2 {
+    padding: 0;
+  }
+
+  .brand {
+    border-right: 1px solid $lightgray;
     height: $appbar-height;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+    width: auto;
+    float: left;
 
-    .mui-col-sm-2 {
-        padding: 0;
+    .logo {
+      height: 30px;
+      margin: 20px;
     }
+  }
 
-    .brand {
-        border-right: 1px solid $lightgray;
-        height: $appbar-height;
-        width: auto;
-        float: left;
+  .filter {
+    margin: 15px;
+    display: inline-flex;
 
-        .logo {
-            height: 30px;
-            margin: 20px;
-        }
-    }
+    .mui-textfield {
+      display: inline-block;
+      margin-bottom: 0;
+      padding-top: 0;
+      border: 1px solid $lightgray;
 
-    .filter {
-        margin: 15px;
-        display: inline-flex;
-
-        .mui-textfield {
-            display: inline-block;
-            margin-bottom: 0;
-            padding-top: 0;
-            border: 1px solid $lightgray;
-
-            input {
-                border-bottom: none;
-                margin-left: 10px;
-                width: 424px;
-                text-align: left;
-                padding-right: 46px;
-                height: 38px;
-
-                &:active,
-                &:focus {
-
-                    &::placeholder {
-                        color: white;
-                    }
-                }
-            }
-
-            .clear {
-                border: none;
-                display: inline-block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 26px;
-                padding: 6px;
-                cursor: pointer;
-
-                &.yellow-border {
-
-                    g {
-                        fill: $yellow;
-                    }
-                }
-            }
-
-            &.yellow-border {
-                border-color: $yellow;
-            }
-        }
-
-        img {
-            display: inline-block;
-            width: 18px;
-            padding: 10px;
-            border-width: 1px 0 1px 1px;
-            border-style: solid;
-            border-color: $lightgray;
-
-            &.yellow-border {
-                border-color: $yellow;
-            }
-        }
-    }
-
-    .menu {
-        border-left: 1px solid $lightgray;
-        width: auto;
-        float: right;
-        height: $appbar-height;
-        position: relative;
-
-        &:hover {
-            background-color: #f8f8f8;
-        }
-
-        .menu-toggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: $appbar-height;
-            height: $appbar-height;
-            border: 1px solid transparent;
-            background-color: transparent;
-
-            &:focus {
-                outline: none;
-                border: 1px solid $yellow;
-            }
-        }
-
-        .alerts-count {
-            background-color: $red;
-            width: .8em;
-            height: .8em;
-            border-radius: .8em;
-            position: absolute;
-            top: 10px;
-            right: 50px;
-        }
-
-        .profile-icon {
-            margin: 15px;
-            width: 40px;
-            height: 40px;
-        }
-
-        .default-avatar {
-            margin: 15px;
-            border: 1px solid $lightgray;
-            width: 20px;
-            height: 20px;
-            padding: 10px;
-        }
-
-        .name {
-            display: none;
-        }
-
-        &.enabled {
-            background-color: black;
-            color: white;
-            width: 250px;
-            border-bottom: 1px solid #5b555c;
-            border-left: none;
-            height: calc(#{$appbar-height} - 1px);
-            position: relative;
-            z-index: 2;
-
-            .alerts-count {
-                display: none;
-            }
-
-            .name {
-                display: inline-block;
-                padding: 0 10px 0 15px;
-                clear: both;
-                color: white;
-                text-decoration: none;
-                font-size: 14px;
-                height: calc(#{$appbar-height} - 1px);
-                line-height: $appbar-height;
-                float: left;
-                width: 130px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .default-avatar {
-                border: 1px solid $gray;
-                margin-left: 0;
-                float: right;
-
-                g {
-                    fill: white;
-                }
-            }
-
-            .profile-icon {
-                margin-left: 0;
-                float: right;
-            }
-        }
-    }
-
-    .search-button {
-        display: none;
-    }
-}
-
-.search-mobile {
-    display: none;
-    height: 0;
-    visibility: hidden;
-}
-
-.messages {
-    margin-top: $appbar-height;
-    background-color: black;
-    color: $lightgray;
-
-    #alert-nightly {
-        display: none;
-
-        @media all and (max-width: 767px) {
-            visibility: hidden;
-            padding: 0;
-            height: 0;
-        }
-    }
-
-    .alert {
-        padding: 0.5em;
-        text-align: center;
-        border-top: 1px solid white;
-        color: white;
-        margin: 0;
-        position: relative;
-        overflow: hidden; // establish a new block formatting context
-
-        // this is the width which comfortably fits a risk indicator and text content
-        @media (min-width: 40em) {
-            padding: 0.5em 1em;
-        }
-
-        &.alert-success {
-            --alert-bg-color: white;
-            --alert-color: $alert-success;
-        }
-
-        &.alert-medium {
-            --alert-bg-color: $alert-medium;
-            --alert-color: white;
-        }
-
-        &.alert-high {
-            --alert-bg-color: $alert-high;
-            --alert-color: black;
-        }
-
-        &.alert-maximum {
-            --alert-bg-color: $alert-maximum;
-            --alert-color: white;
-        }
-
-        &.alert-low {
-            --alert-bg-color: $alert-low;
-            --alert-color: black;
-        }
-
-        .alert-risk {
-            color: var(--alert-color);
-            background-color: var(--alert-bg-color);
-            padding: 0.125em;
-            width: 9em;
-            text-transform: uppercase;
-            display: inline-block;
-            font-weight: bold;
-            text-align: center;
-            margin: 1em 0;
-
-            @media (min-width: 40em) {
-                position: absolute;
-                left: 1em;
-                top: 1em;
-                margin: 0;
-            }
-
-            span {
-                font-size: .8em;
-            }
-        }
-
-        > p {
-            margin: 1em 0;
-            max-width: 60em;
-
-            @media (min-width: 40em) {
-                margin: 1em auto;
-                padding-left: 11em; /* always have space for abs pos risk indicator */
-                padding-right: 11em; /* balance space on left*/
-            }
-        }
-
-        .alert-message {
-
-            @media all and (max-width: 767px) {
-                margin-bottom: 10px;
-            }
-
-            p {
-                display: inline;
-                margin-bottom: 0;
-                font-weight: bold;
-                vertical-align: middle;
-            }
-        }
-    }
-
-    .closebtn {
-        color: white;
-        opacity: .8;
-        font-size: 2em;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-left: 5px;
-        padding: 5px;
-        vertical-align: text-top;
-        background-color: transparent;
-        border: 0;
-        font-weight: 100;
-        position: absolute;
-        top: 0.5em;
-        right: 0.5em;
-
-        &::-moz-focus-inner {
-            border: 1px solid transparent;
-        }
-
-        &:focus {
-            outline: none;
-            border: 1px solid white;
-            border-radius: 2em;
-        }
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-}
-
-.alert-feedback {
-    margin: 2em 0;
-
-    p {
-        font-style: italic;
-    }
-}
-
-.alert .loading-indicator {
-    display: none;
-    text-align: center;
-}
-
-.alert[data-loading] {
-
-    .loading-indicator {
-        display: block;
-    }
-}
-
-.alert-actions {
-    text-align: center;
-    margin: 1.5em 0;
-
-    .notifications & {
+      input {
+        border-bottom: none;
+        margin-left: 10px;
+        width: 424px;
         text-align: left;
-    }
+        padding-right: 46px;
+        height: 38px;
 
-    .btn-alert {
-        padding: .5em 1em;
-        background: white;
-        border: 1px solid black;
-        font-family: inherit;
-        display: inline-block;
-        color: black;
-        text-decoration: none;
-        border-radius: 1.5em;
-        margin: .5em;
-        transition: background-color 0.2s ease-in-out;
-
-        &:first-of-type {
-            margin-left: 0;
-        }
-
+        &:active,
         &:focus {
-            background-color: $lightergray;
-            color: $blue;
-            outline: none;
-        }
-
-        &:hover {
-            background: black;
+          &::placeholder {
             color: white;
-
-            svg path {
-                fill: #fff;
-            }
+          }
         }
+      }
 
-        svg {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: .5em;
-
-            path {
-                fill: #000;
-            }
-        }
-    }
-}
-
-.content {
-    background-color: $bggray;
-    min-height: 100%;
-    padding: 20px;
-
-    .app-grid ul {
-        padding-left: 0;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        @media all and (max-width: 767px) {
-            width: 100%;
-            margin: auto;
-        }
-
-        .app-tile {
-            margin: 5px 10px 15px;
-            flex-basis: auto;
-            text-align: center;
-            max-width: 192px;
-            display: block;
-            text-decoration: none;
-
-            &:hover {
-                color: black;
-
-                .app-logo {
-                    border-color: $yellow;
-                }
-            }
-
-            &:focus {
-                outline: none;
-
-                .app-logo {
-                    border-color: $yellow;
-                }
-            }
-
-            .app-logo {
-                background-color: white;
-                border: 1px solid $lightgray;
-                padding: 10px;
-                width: 130px;
-                height: 130px;
-                display: table-cell;
-                vertical-align: middle;
-
-                img {
-                    display: block;
-                    margin: 0 auto;
-                    max-width: 120px;
-                    max-height: 120px;
-                }
-
-                &.yellow-border {
-                    border-color: $yellow;
-                }
-            }
-
-            .app-name {
-                color: black;
-                margin: 10px 0;
-            }
-        }
-    }
-}
-
-.notifications {
-
-    h1 {
-        color: black;
+      .clear {
+        border: none;
         display: inline-block;
-        margin-bottom: 40px;
-        text-align: center;
-        text-transform: uppercase;
-        width: 100%;
-        font-size: 1em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 26px;
+        padding: 6px;
+        cursor: pointer;
 
-        img {
-            vertical-align: text-top;
-            margin-right: 5px;
+        &.yellow-border {
+          g {
+            fill: $yellow;
+          }
         }
+      }
 
-        .alerts-count {
-            background-color: $red;
-            border-radius: 100%;
-            min-width: 1.5em;
-            min-height: 1.5em;
-            color: white;
-            display: inline-block;
-            font-weight: bold;
-            margin-left: .5em;
-            text-align: center;
-            font-size: .875em;
-            line-height: 1.4;
-        }
+      &.yellow-border {
+        border-color: $yellow;
+      }
     }
 
-    .alert-panel {
-        background-color: white;
-        box-shadow: 7px 7px 0 0 #d3d3d3;
-        margin: 0 auto 40px auto;
-        max-width: 100%;
-        width: 775px;
+    img {
+      display: inline-block;
+      width: 18px;
+      padding: 10px;
+      border-width: 1px 0 1px 1px;
+      border-style: solid;
+      border-color: $lightgray;
 
-        .alert-header {
-            font-weight: bold;
-            padding: 26px 32px;
-            text-transform: uppercase;
-
-            &.alert-success {
-                --alert-bg-color: white;
-                --alert-color: $alert-success;
-            }
-
-            &.alert-medium {
-                --alert-bg-color: $alert-medium;
-                --alert-color: white;
-            }
-
-            &.alert-high {
-                --alert-bg-color: $alert-high;
-                --alert-color: black;
-            }
-
-            &.alert-maximum {
-                --alert-bg-color: $alert-maximum;
-                --alert-color: white;
-            }
-
-            &.alert-low {
-                --alert-bg-color: $alert-low;
-                --alert-color: black;
-            }
-
-            .alert-risk {
-                color: var(--alert-color);
-                background-color: var(--alert-bg-color);
-                padding: 5px 35px;
-                font-size: .875em;
-            }
-
-            border-bottom: 4px solid var(--alert-bg-color);
-        }
-
-        .alert-body {
-            padding: 32px;
-
-            .alert-datetime {
-                font-size: .9em;
-            }
-
-            .alert-summary {
-                color: black;
-                font-size: 1.2em;
-                padding-bottom: 10px;
-                padding-top: 10px;
-            }
-
-            .alert-create-header {
-                color: black;
-                font-size: 1em;
-                padding-bottom: 3px;
-            }
-
-            .alert-details-header {
-                color: black;
-                font-size: 1em;
-                padding-bottom: 3px;
-                padding-top: 10px;
-            }
-
-            .mui-btn {
-                border: 1px solid black;
-                font-weight: bold;
-                margin: 30px 0 0 10px;
-                text-transform: none;
-
-                @media all and (max-width: 543px) {
-                    margin: 20px 0 0 0;
-                }
-
-                img {
-                    margin-right: 10px;
-                }
-            }
-        }
+      &.yellow-border {
+        border-color: $yellow;
+      }
     }
-}
+  }
 
-.alert-survey {
-    border-top: 2px solid $darkgray;
-    text-align: left;
-    font-size: .875em;
+  .menu {
+    border-left: 1px solid $lightgray;
+    width: auto;
+    float: right;
+    height: $appbar-height;
+    position: relative;
 
-    .notifications & {
-        border-top-color: $bggray;
+    &:hover {
+      background-color: #f8f8f8;
     }
 
-    fieldset {
-        border: 0;
-        padding-top: 1em;
-        padding-right: 1em;
-        position: relative;
-        margin: 0 auto;
-        max-width: 30em;
+    .menu-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $appbar-height;
+      height: $appbar-height;
+      border: 1px solid transparent;
+      background-color: transparent;
 
-        @media (min-width: 50em) {
-            padding-left: 14em;
-        }
-
-        .notifications & {
-            margin: 0;
-        }
-    }
-
-    legend {
-        margin: 1em 0 0;
-
-        @media (min-width: 50em) {
-            margin: 1.5em 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-    }
-
-    input {
-        background-color: $darkgray;
-        color: #fff;
-        border: 0;
-        padding: 0.5em 1.5em;
-        margin: 2px 1px 2px 0;
-        transition: background-color 0.2s ease-in-out;
-        font-family: inherit;
-        display: inline-block;
-        vertical-align: middle;
-
-        .notifications & {
-            background-color: $bggray;
-            color: $darkgray;
-        }
-
-        &:hover {
-            color: #fff;
-            background-color: $gray;
-        }
-
-        &:focus {
-            outline: 1px solid $yellow;
-        }
-
-        &:first-of-type {
-            @media (min-width: 50em) {
-                border-radius: 2em 0 0 2em;
-            }
-        }
-
-        &:last-of-type {
-            @media (min-width: 50em) {
-                border-radius: 0 2em 2em 0;
-            }
-        }
-    }
-}
-
-.alert-timing {
-    margin: .5em 0 1.5em;
-
-    time {
-        font-size: .75em;
-    }
-}
-
-.logout {
-    margin-top: 0;
-
-    .mui-row {
-        width: 420px;
-        max-width: 100%;
-        margin: auto;
-    }
-
-    .panel {
-        background-color: white;
-        box-shadow: 5px 5px 0 0 rgba(217, 217, 217, 1);
-        margin-top: 100px;
-        padding: 40px 60px;
-        text-align: center;
-
-        div {
-            margin: 25px;
-
-            &:first-child {
-                margin-top: 0;
-            }
-
-            h2 {
-                font-weight: bold;
-                margin: 0;
-                color: black;
-            }
-
-            &.notice {
-                font-style: italic;
-                font-size: .8em;
-            }
-        }
-
-        a {
-            background-color: black;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            width: 100%;
-            display: block;
-            padding: 0;
-            margin: 0;
-        }
-    }
-
-    .footer-links {
-        margin-top: 60px;
-        text-align: center;
-
-        .icon-container {
-            display: inline-block;
-            margin: 0 1em;
-
-            .icon {
-                display: flex;
-                align-items: center;
-                flex-shrink: 0;
-
-                img {
-                    width: 20px;
-                    margin-right: 10px;
-                    display: inline-block;
-                    filter: invert(80%);
-                }
-
-                a {
-                    color: $gray;
-                    text-decoration: none;
-
-                    &:hover {
-                        color: black;
-                    }
-                }
-            }
-        }
-    }
-}
-
-footer {
-    height: auto;
-    background-color: black;
-    border-top: 1px solid $lightgray;
-    padding: 35px;
-
-    .icon-container {
-        display: inline-block;
-        margin: 0 1em;
-
-        .icon {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-
-            img {
-                width: 20px;
-                margin-right: 10px;
-                display: inline-block;
-                opacity: .8;
-            }
-
-            a {
-                color: $gray;
-                text-decoration: none;
-
-                &:hover {
-                    color: white;
-                }
-            }
-        }
-    }
-}
-
-.user-menu {
-    background-color: black;
-    color: white;
-    z-index: 999;
-    position: fixed;
-    top: $appbar-height;
-    right: 0;
-    display: none;
-    width: 250px;
-
-    &:focus {
+      &:focus {
         outline: none;
+        border: 1px solid $yellow;
+      }
     }
 
-    a {
-        display: block;
-        padding: 0 25px 0 15px;
+    .alerts-count {
+      background-color: $red;
+      width: 0.8em;
+      height: 0.8em;
+      border-radius: 0.8em;
+      position: absolute;
+      top: 10px;
+      right: 50px;
+    }
+
+    .profile-icon {
+      margin: 15px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .default-avatar {
+      margin: 15px;
+      border: 1px solid $lightgray;
+      width: 20px;
+      height: 20px;
+      padding: 10px;
+    }
+
+    .name {
+      display: none;
+    }
+
+    &.enabled {
+      background-color: black;
+      color: white;
+      width: 250px;
+      border-bottom: 1px solid #5b555c;
+      border-left: none;
+      height: calc(#{$appbar-height} - 1px);
+      position: relative;
+      z-index: 2;
+
+      .alerts-count {
+        display: none;
+      }
+
+      .name {
+        display: inline-block;
+        padding: 0 10px 0 15px;
         clear: both;
         color: white;
         text-decoration: none;
         font-size: 14px;
-        overflow: hidden; /* create bfc */
+        height: calc(#{$appbar-height} - 1px);
+        line-height: $appbar-height;
+        float: left;
+        width: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-        &:first-child {
-            padding-top: 15px;
+      .default-avatar {
+        border: 1px solid $gray;
+        margin-left: 0;
+        float: right;
+
+        g {
+          fill: white;
+        }
+      }
+
+      .profile-icon {
+        margin-left: 0;
+        float: right;
+      }
+    }
+  }
+
+  .search-button {
+    display: none;
+  }
+}
+
+.search-mobile {
+  display: none;
+  height: 0;
+  visibility: hidden;
+}
+
+.messages {
+  background-color: black;
+  color: $lightgray;
+
+  #alert-nightly {
+    display: none;
+
+    @media all and (max-width: 767px) {
+      visibility: hidden;
+      padding: 0;
+      height: 0;
+    }
+  }
+
+  .alert {
+    padding: 0.5em;
+    text-align: center;
+    border-top: 1px solid white;
+    color: white;
+    margin: 0;
+    position: relative;
+    overflow: hidden; // establish a new block formatting context
+
+    // this is the width which comfortably fits a risk indicator and text content
+    @media (min-width: 40em) {
+      padding: 0.5em 1em;
+    }
+
+    &.alert-success {
+      --alert-bg-color: white;
+      --alert-color: $alert-success;
+    }
+
+    &.alert-medium {
+      --alert-bg-color: $alert-medium;
+      --alert-color: white;
+    }
+
+    &.alert-high {
+      --alert-bg-color: $alert-high;
+      --alert-color: black;
+    }
+
+    &.alert-maximum {
+      --alert-bg-color: $alert-maximum;
+      --alert-color: white;
+    }
+
+    &.alert-low {
+      --alert-bg-color: $alert-low;
+      --alert-color: black;
+    }
+
+    .alert-risk {
+      color: var(--alert-color);
+      background-color: var(--alert-bg-color);
+      padding: 0.125em;
+      width: 9em;
+      text-transform: uppercase;
+      display: inline-block;
+      font-weight: bold;
+      text-align: center;
+      margin: 1em 0;
+
+      @media (min-width: 40em) {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+        margin: 0;
+      }
+
+      span {
+        font-size: 0.8em;
+      }
+    }
+
+    > p {
+      margin: 1em 0;
+      max-width: 60em;
+
+      @media (min-width: 40em) {
+        margin: 1em auto;
+        padding-left: 11em; /* always have space for abs pos risk indicator */
+        padding-right: 11em; /* balance space on left*/
+      }
+    }
+
+    .alert-message {
+      @media all and (max-width: 767px) {
+        margin-bottom: 10px;
+      }
+
+      p {
+        display: inline;
+        margin-bottom: 0;
+        font-weight: bold;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .closebtn {
+    color: white;
+    opacity: 0.8;
+    font-size: 2em;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 5px;
+    padding: 5px;
+    vertical-align: text-top;
+    background-color: transparent;
+    border: 0;
+    font-weight: 100;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+
+    &::-moz-focus-inner {
+      border: 1px solid transparent;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid white;
+      border-radius: 2em;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.alert-feedback {
+  margin: 2em 0;
+
+  p {
+    font-style: italic;
+  }
+}
+
+.alert .loading-indicator {
+  display: none;
+  text-align: center;
+}
+
+.alert[data-loading] {
+  .loading-indicator {
+    display: block;
+  }
+}
+
+.alert-actions {
+  text-align: center;
+  margin: 1.5em 0;
+
+  .notifications & {
+    text-align: left;
+  }
+
+  .btn-alert {
+    padding: 0.5em 1em;
+    background: white;
+    border: 1px solid black;
+    font-family: inherit;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    border-radius: 1.5em;
+    margin: 0.5em;
+    transition: background-color 0.2s ease-in-out;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:focus {
+      background-color: $lightergray;
+      color: $blue;
+      outline: none;
+    }
+
+    &:hover {
+      background: black;
+      color: white;
+
+      svg path {
+        fill: #fff;
+      }
+    }
+
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5em;
+
+      path {
+        fill: #000;
+      }
+    }
+  }
+}
+
+.content {
+  background-color: $bggray;
+  min-height: 100%;
+  padding: 20px;
+
+  .app-grid ul {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media all and (max-width: 767px) {
+      width: 100%;
+      margin: auto;
+    }
+
+    // .app-tile {
+    //   margin: 5px 10px 15px;
+    //   flex-basis: auto;
+    //   text-align: center;
+    //   max-width: 192px;
+    //   display: block;
+    //   text-decoration: none;
+
+    //   &:hover {
+    //     color: black;
+
+    //     .app-logo {
+    //       border-color: $yellow;
+    //     }
+    //   }
+
+    //   &:focus {
+    //     outline: none;
+
+    //     .app-logo {
+    //       border-color: $yellow;
+    //     }
+    //   }
+
+    //   .app-logo {
+    //     background-color: white;
+    //     border: 1px solid $lightgray;
+    //     padding: 10px;
+    //     width: 130px;
+    //     height: 130px;
+    //     display: table-cell;
+    //     vertical-align: middle;
+
+    //     img {
+    //       display: block;
+    //       margin: 0 auto;
+    //       max-width: 120px;
+    //       max-height: 120px;
+    //     }
+
+    //     &.yellow-border {
+    //       border-color: $yellow;
+    //     }
+    //   }
+
+    //   .app-name {
+    //     color: black;
+    //     margin: 10px 0;
+    //   }
+    // }
+  }
+}
+
+.notifications {
+  h1 {
+    color: black;
+    display: inline-block;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 1em;
+
+    img {
+      vertical-align: text-top;
+      margin-right: 5px;
+    }
+
+    .alerts-count {
+      background-color: $red;
+      border-radius: 100%;
+      min-width: 1.5em;
+      min-height: 1.5em;
+      color: white;
+      display: inline-block;
+      font-weight: bold;
+      margin-left: 0.5em;
+      text-align: center;
+      font-size: 0.875em;
+      line-height: 1.4;
+    }
+  }
+
+  .alert-panel {
+    background-color: white;
+    box-shadow: 7px 7px 0 0 #d3d3d3;
+    margin: 0 auto 40px auto;
+    max-width: 100%;
+    width: 775px;
+
+    .alert-header {
+      font-weight: bold;
+      padding: 26px 32px;
+      text-transform: uppercase;
+
+      &.alert-success {
+        --alert-bg-color: white;
+        --alert-color: $alert-success;
+      }
+
+      &.alert-medium {
+        --alert-bg-color: $alert-medium;
+        --alert-color: white;
+      }
+
+      &.alert-high {
+        --alert-bg-color: $alert-high;
+        --alert-color: black;
+      }
+
+      &.alert-maximum {
+        --alert-bg-color: $alert-maximum;
+        --alert-color: white;
+      }
+
+      &.alert-low {
+        --alert-bg-color: $alert-low;
+        --alert-color: black;
+      }
+
+      .alert-risk {
+        color: var(--alert-color);
+        background-color: var(--alert-bg-color);
+        padding: 5px 35px;
+        font-size: 0.875em;
+      }
+
+      border-bottom: 4px solid var(--alert-bg-color);
+    }
+
+    .alert-body {
+      padding: 32px;
+
+      .alert-datetime {
+        font-size: 0.9em;
+      }
+
+      .alert-summary {
+        color: black;
+        font-size: 1.2em;
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      .alert-create-header {
+        color: black;
+        font-size: 1em;
+        padding-bottom: 3px;
+      }
+
+      .alert-details-header {
+        color: black;
+        font-size: 1em;
+        padding-bottom: 3px;
+        padding-top: 10px;
+      }
+
+      .mui-btn {
+        border: 1px solid black;
+        font-weight: bold;
+        margin: 30px 0 0 10px;
+        text-transform: none;
+
+        @media all and (max-width: 543px) {
+          margin: 20px 0 0 0;
         }
 
-        &:last-child {
-
-            span {
-                margin-bottom: 15px;
-            }
+        img {
+          margin-right: 10px;
         }
+      }
+    }
+  }
+}
+
+.alert-survey {
+  border-top: 2px solid $darkgray;
+  text-align: left;
+  font-size: 0.875em;
+
+  .notifications & {
+    border-top-color: $bggray;
+  }
+
+  fieldset {
+    border: 0;
+    padding-top: 1em;
+    padding-right: 1em;
+    position: relative;
+    margin: 0 auto;
+    max-width: 30em;
+
+    @media (min-width: 50em) {
+      padding-left: 14em;
+    }
+
+    .notifications & {
+      margin: 0;
+    }
+  }
+
+  legend {
+    margin: 1em 0 0;
+
+    @media (min-width: 50em) {
+      margin: 1.5em 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  input {
+    background-color: $darkgray;
+    color: #fff;
+    border: 0;
+    padding: 0.5em 1.5em;
+    margin: 2px 1px 2px 0;
+    transition: background-color 0.2s ease-in-out;
+    font-family: inherit;
+    display: inline-block;
+    vertical-align: middle;
+
+    .notifications & {
+      background-color: $bggray;
+      color: $darkgray;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $gray;
+    }
+
+    &:focus {
+      outline: 1px solid $yellow;
+    }
+
+    &:first-of-type {
+      @media (min-width: 50em) {
+        border-radius: 2em 0 0 2em;
+      }
+    }
+
+    &:last-of-type {
+      @media (min-width: 50em) {
+        border-radius: 0 2em 2em 0;
+      }
+    }
+  }
+}
+
+.alert-timing {
+  margin: 0.5em 0 1.5em;
+
+  time {
+    font-size: 0.75em;
+  }
+}
+
+.logout {
+  margin-top: 0;
+
+  .mui-row {
+    width: 420px;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .panel {
+    background-color: white;
+    box-shadow: 5px 5px 0 0 rgba(217, 217, 217, 1);
+    margin-top: 100px;
+    padding: 40px 60px;
+    text-align: center;
+
+    div {
+      margin: 25px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      h2 {
+        font-weight: bold;
+        margin: 0;
+        color: black;
+      }
+
+      &.notice {
+        font-style: italic;
+        font-size: 0.8em;
+      }
+    }
+
+    a {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      width: 100%;
+      display: block;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .footer-links {
+    margin-top: 60px;
+    text-align: center;
+
+    .icon-container {
+      display: inline-block;
+      margin: 0 1em;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+
+        img {
+          width: 20px;
+          margin-right: 10px;
+          display: inline-block;
+          filter: invert(80%);
+        }
+
+        a {
+          color: $gray;
+          text-decoration: none;
+
+          &:hover {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  height: auto;
+  background-color: black;
+  border-top: 1px solid $lightgray;
+  padding: 35px;
+
+  .icon-container {
+    display: inline-block;
+    margin: 0 1em;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      img {
+        width: 20px;
+        margin-right: 10px;
+        display: inline-block;
+        opacity: 0.8;
+      }
+
+      a {
+        color: $gray;
+        text-decoration: none;
 
         &:hover {
-            text-decoration: none;
+          color: white;
         }
+      }
+    }
+  }
+}
 
-        &:focus {
-            outline: 1px solid $yellow;
-        }
+.user-menu {
+  background-color: black;
+  color: white;
+  z-index: 999;
+  position: fixed;
+  top: $appbar-height;
+  right: 0;
+  display: none;
+  width: 250px;
 
-        &.inactive {
-            pointer-events: none;
-            cursor: default;
-            color: $gray;
+  &:focus {
+    outline: none;
+  }
 
-            img {
-                opacity: .3;
-            }
-        }
+  a {
+    display: block;
+    padding: 0 25px 0 15px;
+    clear: both;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    overflow: hidden; /* create bfc */
 
-        span {
-            display: inline-block;
-            float: left;
-            line-height: 50px;
-        }
-
-        .menu-icon {
-            width: 20px;
-            height: 20px;
-            float: right;
-            margin: 15px 0;
-        }
+    &:first-child {
+      padding-top: 15px;
     }
 
-    .coming-soon {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid $gray;
-        line-height: 0.1em;
-        margin: 70px 0 20px;
-        text-transform: uppercase;
-        font-size: 11px;
-        clear: both;
-        color: $gray;
-
-        span {
-            background-color: black;
-            padding: 0 10px;
-        }
+    &:last-child {
+      span {
+        margin-bottom: 15px;
+      }
     }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: 1px solid $yellow;
+    }
+
+    &.inactive {
+      pointer-events: none;
+      cursor: default;
+      color: $gray;
+
+      img {
+        opacity: 0.3;
+      }
+    }
+
+    span {
+      display: inline-block;
+      float: left;
+      line-height: 50px;
+    }
+
+    .menu-icon {
+      width: 20px;
+      height: 20px;
+      float: right;
+      margin: 15px 0;
+    }
+  }
+
+  .coming-soon {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid $gray;
+    line-height: 0.1em;
+    margin: 70px 0 20px;
+    text-transform: uppercase;
+    font-size: 11px;
+    clear: both;
+    color: $gray;
+
+    span {
+      background-color: black;
+      padding: 0 10px;
+    }
+  }
 }
 
 .error-page {
-    background-color: white;
+  background-color: white;
+  margin-top: 60px;
+
+  h1 {
+    color: black;
+    font-size: 4em;
     margin-top: 60px;
+  }
 
-    h1 {
-        color: black;
-        font-size: 4em;
-        margin-top: 60px;
+  .panel {
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 0 0 rgba(217, 217, 217, 1);
+    color: black;
+    padding: 30px;
+    position: relative;
+    margin-top: 30px;
+    width: 570px;
+    max-width: 90%;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 30px;
+      top: -40px;
+      border: 25px solid;
+      border-color: transparent transparent #f4f4f4 transparent;
     }
 
-    .panel {
-        background-color: #f4f4f4;
-        box-shadow: 5px 5px 0 0 rgba(217, 217, 217, 1);
-        color: black;
-        padding: 30px;
-        position: relative;
-        margin-top: 30px;
-        width: 570px;
-        max-width: 90%;
+    h2 {
+      font-weight: bold;
+      margin-top: 0;
+    }
+  }
 
-        &:before {
-            content: ' ';
-            position: absolute;
-            width: 0;
-            height: 0;
-            left: 30px;
-            top: -40px;
-            border: 25px solid;
-            border-color: transparent transparent #f4f4f4 transparent;
-        }
+  .section {
+    margin-top: 25px;
 
-        h2 {
-            font-weight: bold;
-            margin-top: 0;
-        }
+    .mui-btn {
+      width: 270px;
+      float: right;
+      margin-top: 0;
+
+      &.help {
+        border: 1px solid black;
+        display: block;
+        font-weight: bold;
+      }
+
+      &.return {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+        display: block;
+        font-weight: bold;
+        margin-left: 0;
+      }
     }
 
-    .section {
-        margin-top: 25px;
+    .youtube {
+      width: 520px;
+      height: 293px;
 
-        .mui-btn {
-            width: 270px;
-            float: right;
-            margin-top: 0;
-
-            &.help {
-                border: 1px solid black;
-                display: block;
-                font-weight: bold;
-            }
-
-            &.return {
-                background-color: black;
-                border: 1px solid black;
-                color: white;
-                display: block;
-                font-weight: bold;
-                margin-left: 0;
-            }
-        }
-
-        .youtube {
-            width: 520px;
-            height: 293px;
-
-            img {
-                display: block;
-                max-width: 100%;
-            }
-        }
+      img {
+        display: block;
+        max-width: 100%;
+      }
     }
+  }
 }
 
 .forbidden {
+  .panel {
+    max-width: calc(100% - 60px);
+  }
 
-    .panel {
-        max-width: calc(100% - 60px);
+  .section {
+    .mui-btn {
+      max-width: calc(100% - 100px);
+      float: none;
+      margin: 0 auto;
+
+      &.return {
+        margin-left: auto;
+        margin-top: 5px;
+      }
     }
-
-    .section {
-
-        .mui-btn {
-            max-width: calc(100% - 100px);
-            float: none;
-            margin: 0 auto;
-
-            &.return {
-                margin-left: auto;
-                margin-top: 5px;
-            }
-        }
-    }
+  }
 }
 
 @media all and (max-width: 991px) {
-
-    .error-page {
-
-        .section {
-
-            .youtube {
-                width: 340px;
-                height: 191px;
-            }
-        }
+  .error-page {
+    .section {
+      .youtube {
+        width: 340px;
+        height: 191px;
+      }
     }
+  }
 }
 
 @media all and (max-width: 767px) {
+  .mui-appbar .filter .mui-textfield input {
+    width: 240px;
+  }
 
-    .mui-appbar .filter .mui-textfield input {
-        width: 240px;
+  .error-page {
+    .panel {
+      max-width: calc(100% - 60px);
     }
 
-    .error-page {
+    .section {
+      .mui-btn {
+        max-width: calc(100% - 100px);
+        float: none;
+        margin: 0 auto;
 
-        .panel {
-            max-width: calc(100% - 60px);
+        &.return {
+          margin-left: auto;
+          margin-top: 5px;
+        }
+      }
+
+      .video {
+        margin-top: 20px;
+        text-align: center;
+
+        .youtube {
+          margin: auto;
         }
 
-        .section {
-
-            .mui-btn {
-                max-width: calc(100% - 100px);
-                float: none;
-                margin: 0 auto;
-
-                &.return {
-                    margin-left: auto;
-                    margin-top: 5px;
-                }
-            }
-
-            .video {
-                margin-top: 20px;
-                text-align: center;
-
-                .youtube {
-                    margin: auto;
-                }
-
-                iframe {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            .error-img {
-                display: block;
-                max-width: 100%;
-                margin: auto;
-            }
+        iframe {
+          width: 100%;
+          height: 100%;
         }
+      }
+
+      .error-img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+      }
     }
+  }
 }
 
 @media all and (max-width: 543px) {
+  $appbar-height: 80px;
 
-    $appbar-height: 80px;
+  .mui-appbar {
+    height: $appbar-height;
 
-    .mui-appbar {
-        height: $appbar-height;
-
-        &.menu-enabled {
-
-            > div {
-
-                &:first-child {
-                    width: 70px;
-                }
-
-                &:last-child {
-                    width: auto;
-                    float: none;
-                }
-            }
+    &.menu-enabled {
+      > div {
+        &:first-child {
+          width: 70px;
         }
 
-        .brand {
-            border-right: none;
-
-            .logo {
-                margin: 25px 20px;
-            }
+        &:last-child {
+          width: auto;
+          float: none;
         }
-
-        .menu {
-            height: $appbar-height;
-
-            .alerts-count {
-                top: 15px;
-                right: 56px;
-            }
-
-            .profile-icon {
-                display: block;
-                width: 40px;
-                height: 40px;
-                margin: 20px;
-            }
-
-            .default-avatar {
-                border: 1px solid $lightgray;
-                display: block;
-                width: 20px;
-                height: 20px;
-                padding: 10px;
-                margin: 20px;
-            }
-
-            &.enabled {
-                height: calc(#{$appbar-height} - 1px);
-                width: 250px;
-
-                .name {
-                    height: calc(#{$appbar-height} - 1px);
-                    line-height: $appbar-height;
-                    width: 105px;
-                }
-            }
-        }
-
-        .search-button {
-            display: inline-block;
-            height: $appbar-height;
-            width: $appbar-height;
-            background-image: url('../../img/search.svg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 18px;
-            border-left: 1px solid $lightgray;
-            float: right;
-
-            &.invert {
-                background-color: black;
-                color: $lightgray;
-                border-bottom: 1px solid black;
-                background-image: url('../../img/search-w.svg');
-            }
-
-            &.menu-enabled {
-                float: left;
-            }
-
-            button {
-                border: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-            }
-        }
+      }
     }
 
-    .user-menu {
-        top: $appbar-height;
-        height: 100%;
+    .brand {
+      border-right: none;
+
+      .logo {
+        margin: 25px 20px;
+      }
+    }
+
+    .menu {
+      height: $appbar-height;
+
+      .alerts-count {
+        top: 15px;
+        right: 56px;
+      }
+
+      .profile-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 20px;
+      }
+
+      .default-avatar {
+        border: 1px solid $lightgray;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        margin: 20px;
+      }
+
+      &.enabled {
+        height: calc(#{$appbar-height} - 1px);
         width: 250px;
 
-        a {
-            padding: 0 30px 0 15px;
-
-            span {
-                line-height: $appbar-height;
-            }
-
-            .menu-icon {
-                margin: 27px 0;
-            }
+        .name {
+          height: calc(#{$appbar-height} - 1px);
+          line-height: $appbar-height;
+          width: 105px;
         }
-
-        .coming-soon {
-            margin-top: 100px;
-        }
+      }
     }
 
-    .search-mobile {
+    .search-button {
+      display: inline-block;
+      height: $appbar-height;
+      width: $appbar-height;
+      background-image: url('../../img/search.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 18px;
+      border-left: 1px solid $lightgray;
+      float: right;
+
+      &.invert {
         background-color: black;
-        height: $appbar-height;
-        margin-top: $appbar-height;
-        visibility: visible;
-        margin-bottom: -$appbar-height;
+        color: $lightgray;
+        border-bottom: 1px solid black;
+        background-image: url('../../img/search-w.svg');
+      }
 
-        .mui-textfield {
-            width: 80%;
-            margin: auto;
-            padding-top: 20px;
+      &.menu-enabled {
+        float: left;
+      }
 
-            input {
-                color: $lightgray;
-                text-align: center;
-                height: 38px;
-                border: none;
+      button {
+        border: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+      }
+    }
+  }
 
-                &::placeholder {
-                    color: $gray;
-                }
+  .user-menu {
+    top: $appbar-height;
+    height: 100%;
+    width: 250px;
 
-                &:active,
-                &:focus {
+    a {
+      padding: 0 30px 0 15px;
 
-                    &::placeholder {
-                        color: black;
-                    }
-                }
-            }
+      span {
+        line-height: $appbar-height;
+      }
+
+      .menu-icon {
+        margin: 27px 0;
+      }
+    }
+
+    .coming-soon {
+      margin-top: 100px;
+    }
+  }
+
+  .search-mobile {
+    background-color: black;
+    height: $appbar-height;
+    margin-top: $appbar-height;
+    visibility: visible;
+    margin-bottom: -$appbar-height;
+
+    .mui-textfield {
+      width: 80%;
+      margin: auto;
+      padding-top: 20px;
+
+      input {
+        color: $lightgray;
+        text-align: center;
+        height: 38px;
+        border: none;
+
+        &::placeholder {
+          color: $gray;
         }
-    }
 
-    .messages {
-        margin-top: $appbar-height;
-    }
-
-    .content {
-        padding: 10px;
-
-        .app-grid {
-
-            .app-tile {
-                margin: 10px;
-                max-width: 122px;
-
-                .app-logo {
-                    padding: 10px;
-                    width: 100px;
-                    height: 100px;
-
-                    img {
-                        max-width: 90px;
-                        max-height: 90px;
-                    }
-                }
-            }
+        &:active,
+        &:focus {
+          &::placeholder {
+            color: black;
+          }
         }
+      }
     }
+  }
 
-    .logout {
+  .messages {
+    margin-top: $appbar-height;
+  }
 
-        .panel {
-            margin-top: 20px;
-            padding: 30px;
+  .content {
+    padding: 10px;
+
+    .app-grid {
+      .app-tile {
+        margin: 10px;
+        max-width: 122px;
+
+        .app-logo {
+          padding: 10px;
+          width: 100px;
+          height: 100px;
+
+          img {
+            max-width: 90px;
+            max-height: 90px;
+          }
         }
+      }
     }
+  }
 
-    footer {
+  .logout {
+    .panel {
+      margin-top: 20px;
+      padding: 30px;
+    }
+  }
 
-        .icon-container {
-            margin: .2em 1em;
+  footer {
+    .icon-container {
+      margin: 0.2em 1em;
 
-            .icon {
-                display: flex;
-                align-items: center;
-                flex-shrink: 0;
+      .icon {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
 
-                img {
-                    width: 20px;
-                    margin-right: 10px;
-                    display: inline-block;
-                }
-
-                a {
-                    color: $gray;
-                    text-decoration: none;
-
-                    &:hover {
-                        color: white;
-                    }
-                }
-            }
+        img {
+          width: 20px;
+          margin-right: 10px;
+          display: inline-block;
         }
+
+        a {
+          color: $gray;
+          text-decoration: none;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
     }
+  }
 }
 
 @media all and (max-width: 359px) {
+  .mui-appbar {
+    .menu {
+      &.enabled {
+        width: 160px;
 
-    .mui-appbar {
-
-        .menu {
-
-            &.enabled {
-                width: 160px;
-
-                .name {
-                    width: 65px;
-                }
-            }
+        .name {
+          width: 65px;
         }
+      }
+    }
+  }
+
+  .user-menu {
+    width: 100%;
+
+    a {
+      padding: 0 30px 0 20px;
+
+      &.inactive {
+        padding: 30px 30px 55px 20px;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        span {
+          line-height: normal;
+        }
+
+        img {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .error-page {
+    padding-top: 10px;
+
+    .panel {
+      padding: 20px;
+      width: calc(100% - 40px);
     }
 
-    .user-menu {
-        width: 100%;
+    .section {
+      margin-top: 15px;
+      text-align: center;
 
-        a {
-            padding: 0 30px 0 20px;
+      .mui-btn {
+        width: calc(100% - 100px);
+        float: none;
+        margin: 0 auto;
 
-            &.inactive {
-                padding: 30px 30px 55px 20px;
-
-                &:last-child {
-                    padding-bottom: 0;
-                }
-
-                span {
-                    line-height: normal;
-                }
-
-                img {
-                    margin: 0;
-                }
-            }
+        &.return {
+          margin-left: auto;
+          margin-top: 5px;
         }
+      }
+
+      .youtube {
+        width: 280px;
+        height: 163px;
+      }
     }
-
-    .error-page {
-        padding-top: 10px;
-
-        .panel {
-            padding: 20px;
-            width: calc(100% - 40px);
-        }
-
-        .section {
-            margin-top: 15px;
-            text-align: center;
-
-            .mui-btn {
-                width: calc(100% - 100px);
-                float: none;
-                margin: 0 auto;
-
-                &.return {
-                    margin-left: auto;
-                    margin-top: 5px;
-                }
-            }
-
-            .youtube {
-                width: 280px;
-                height: 163px;
-            }
-        }
-    }
+  }
 }

@@ -76,9 +76,16 @@ assets = Environment(app)
 js = Bundle("js/base.js", filters="jsmin", output="js/gen/packed.js")
 assets.register("js_all", js)
 
+dashboard_js = Bundle("js/dashboard.js", filters="jsmin", output="js/gen/dashboard.js")
+assets.register("js_dashboard", dashboard_js)
+
 sass = Bundle("css/base.scss", filters="scss")
-css = Bundle(sass, filters="cssmin", output="css/gen/all.css")
-assets.register("css_all", css)
+css = Bundle(sass, filters="cssmin", output="css/gen/base.css")
+assets.register("css_base", css)
+
+dashboard_sass = Bundle("css/dashboard.scss", filters="scss")
+dashboard_css = Bundle(dashboard_sass, filters="cssmin", output="css/gen/dashboard.css")
+assets.register("css_dashboard", dashboard_css)
 
 # Hack to support serving .svg
 mimetypes.add_type("image/svg+xml", ".svg")
@@ -139,8 +146,10 @@ def forbidden():
         jws=jws, public_key=app.config["FORBIDDEN_PAGE_PUBLIC_KEY"]
     )
     token_verifier.verify
+    # def temp_verify():
+    #     return "200"
 
-    return render_template("forbidden.html", token_verifier=token_verifier)
+    return render_template("forbidden.html", token_verifier=temp_verify)
 
 
 @app.route("/logout")

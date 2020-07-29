@@ -22,9 +22,10 @@ RUN mkdir /dashboard
 RUN chown -R flaskuser /dashboard
 COPY requirements.txt /dashboard/requirements.txt
 RUN pip3 install --upgrade pip
+
 RUN pip3 install -r /dashboard/requirements.txt
 COPY ./dashboard/ //dashboard/
-RUN rm /dashboard/static/css/gen/all.css 2& > /dev/null
+RUN rm /dashboard/static/css/gen/base.css 2& > /dev/null
 RUN rm /dashboard/static/js/gen/packed.js 2& > /dev/null
 RUN rm /dashboard/data/apps.yml-etag 2& > /dev/null
 RUN mkdir -p /dashboard/static/img/logos

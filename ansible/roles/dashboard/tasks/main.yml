@@ -1,5 +1,4 @@
 ---
-
 - name: Install dumb init
   get_url:
     dest: /usr/bin/dumb-init
@@ -18,20 +17,20 @@
 
 - name: Copy the config
   copy:
-   src: ../files/nginx/nginx.conf
-   dest: /etc/nginx/nginx.conf
+    src: ../files/nginx/nginx.conf
+    dest: /etc/nginx/nginx.conf
 
 - name: Copy the config
   copy:
-   src: ../files/nginx/start.sh
-   dest: /usr/bin/start.sh
-   mode: 0775
+    src: ../files/nginx/start.sh
+    dest: /usr/bin/start.sh
+    mode: 0775
 
 - name: Copy the everett ini file
   copy:
-   src: ../files/sso-dashboard.ini
-   dest: /etc/sso-dashboard.ini
-   mode: 0775
+    src: ../files/sso-dashboard.ini
+    dest: /etc/sso-dashboard.ini
+    mode: 0775
 
 - name: Install git
   yum: name=git state=latest
@@ -55,11 +54,11 @@
 
 - name: Copy the Requirements
   copy:
-   src: /dashboard/requirements.txt
-   dest: /sso-dashboard/requirements.txt
-   owner: flaskapp
-   group: nginx
-   mode: 755
+    src: /dashboard/requirements.txt
+    dest: /sso-dashboard/requirements.txt
+    owner: flaskapp
+    group: nginx
+    mode: 755
 
 - name: Install requirements
   pip:
@@ -68,15 +67,15 @@
 
 - name: Copy The Application
   copy:
-   src: /dashboard/
-   dest: /sso-dashboard/
-   owner: flaskapp
-   group: nginx
-   mode: 755
+    src: /dashboard/
+    dest: /sso-dashboard/
+    owner: flaskapp
+    group: nginx
+    mode: 755
 
 - name: Cache busting
   file:
-    path: /sso-dashboard/static/css/gen/all.css
+    path: /sso-dashboard/static/css/gen/base.css
     state: absent
 
 - name: Cache busting
