@@ -1,54 +1,55 @@
-let searchQuery = '';
-const buildTile = (appItem) => {
-  const logoPrefix = window._SSOLogoPrefix;
-  const appTile = document.querySelector('#application-template');
-  const clonedTile = appTile.content.cloneNode(true);
-  const link = clonedTile.querySelector('.app-tile');
-  link.setAttribute('href', appItem.url);
-  link.setAttribute('id', appItem.name);
-  const image = clonedTile.querySelector('.app-tile__logo');
-  image.setAttribute('src', `${logoPrefix}${appItem.logo}`);
-  image.setAttribute('alt', appItem.name);
-  const label = clonedTile.querySelector('.app-tile__name');
-  label.textContent = appItem.name;
-  return clonedTile;
-};
-const renderAppList = () => {
-  const appLibrary = window._RawSSODashboardApps
-    .map(({ application }) => application)
-    .filter((app) =>
-      app.name.toLowerCase().includes(searchQuery.toLowerCase())
+// TODO: Move highlight functionality into a different file
+class Dashboard {
+  static CONTAINER_CLASS = '.app-grid';
+  constructor() {
+    this.appLibrary = (window._RawSSODashboardApps || []).map(
+      ({ application }) => application
     );
-  const appList = document.querySelector('.app-list');
-  appList.innerHTML = '';
-  for (let i = 0, len = appLibrary.length; i < len; i++) {
-    appList.append(buildTile(appLibrary[i]));
+    this.$headerElement = document.getElementsByTagName(
+      'moz-components-factor-header'
+    )[0];
+    this.highlights = new Highlights(this.appLibrary);
+    this.grid = new Grid();
+    this.searchQuery = '';
+    this.setup();
   }
-};
-const buildDashboard = () => {
-  renderAppList();
-  document
-    .getElementsByTagName('moz-components-factor-header')[0]
-    .addEventListener('factor:search:clear', (e) => {
-      console.log('search cleared');
-      searchQuery = '';
-      renderAppList();
-    });
-  // TODO: Use local storage to create a list of "frequently clicked on apps"
-  document
-    .getElementsByTagName('moz-components-factor-header')[0]
-    .addEventListener('factor:search:submitted', (e) => {
-      console.log('search clicked: ', e);
-      // searchQuery = e.details[0].
-    });
-  document
-    .getElementsByTagName('moz-components-factor-header')[0]
-    .addEventListener('factor:search:keyup', (e) => {
+  setup() {
+    const updateDashboard = (e) => {
+      if (!e.detail.length) {
+        return;
+      }
       const { event } = e.detail[0];
-      searchQuery = event.target.value;
-      renderAppList();
+      this.searchQuery = event.target.value;
+      this.render();
+    };
+    this.$headerElement.addEventListener('factor:search:clear', (e) => {
+      this.searchQuery = '';
+      this.render();
     });
-};
+    this.$headerElement.addEventListener('factor:search:submitted', (e) => {
+      updateDashboard(e);
+    });
+    this.$headerElement.addEventListener('factor:search:keyup', (e) => {
+      updateDashboard(e);
+    });
+  }
+  renderApps() {
+    const appLibrary = this.appLibrary
+      .filter(
+        (app) => this.highlights.getHighlightKeys().indexOf(app.name) === -1
+      )
+      .filter((app) =>
+        app.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+
+    this.grid.renderApps(Dashboard.CONTAINER_CLASS, appLibrary);
+  }
+  render() {
+    this.renderApps();
+    this.highlights.render(this.searchQuery);
+  }
+}
 window.onload = function () {
-  buildDashboard();
+  const dashboard = new Dashboard();
+  dashboard.render();
 };

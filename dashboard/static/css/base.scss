@@ -34,7 +34,7 @@ $gray: #808080;
 $lightgray: #cfcfcf;
 $lightergray: #f4f4f4;
 $darkgray: #303030;
-$bggray: #f8f8f8;
+$bggray: #ededf0;
 $yellow: #faba00;
 $blue: #229dc4;
 $red: #d04437;
@@ -60,6 +60,10 @@ body {
   line-height: 1.4;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.03em;
+}
+
+ul {
+  list-style: none;
 }
 
 .visually-hidden {
@@ -480,11 +484,9 @@ body {
 .content {
   background-color: $bggray;
   min-height: 100%;
-  padding: 20px;
 
   .app-grid ul {
     padding-left: 0;
-    list-style: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

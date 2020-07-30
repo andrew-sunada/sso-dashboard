@@ -40,14 +40,35 @@
           />
         </a>
     </moz-components-factor-header>
+    <!-- <div class="mui-appbar">
+      <div class="mui-col-sm-2 mui-col-xs-5 mui--text-right">
+        <div class="brand">
+          <a href="/">
+            <img
+              src="/static/img/mozilla.svg"
+              class="logo logo-large mui--hidden-md mui--hidden-sm"
+            />
+          </a>
+          <a href="/">
+            <img
+              src="/static/img/mozilla-m.svg"
+              class="logo logo-small mui--hidden-lg mui--hidden-xl mui--hidden-xs"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="mui-col-sm-8 mui--hidden-xs">
+        {% block search %}{% endblock %}
+      </div>
+      <div class="mui-col-sm-2 mui-col-xs-7 mui--text-left">
+        {% block menu %}{% endblock %} {% block search_button %}{% endblock %}
+      </div> -->
     </div>
     {% endblock %} {% block search_mobile %}{% endblock %} {% block messages
     %}{% endblock %}
 
     <div class="content {% block content_class %}{% endblock %}">
-      <div class="mui-container">
         {% block content %} {% endblock %}
-      </div>
     </div>
 
     {% block user_menu %}{% endblock %} {% block footer %}

@@ -119,17 +119,27 @@
 {% endblock %}
 
 {% block content %}
+<template id="application-template">
+  <li class="app-list__item">
+   <a class="app-tile" target="_blank">
+     <img class="app-tile__logo" role="presentation" >
+   </a>
+   <p class="app-tile__name"></p>
+  </li>
+ 
+</template>
+<section class="highlight-apps">
+  <p class="app-grid__header">
+    <moz-components-factor-icon class="header-icon" width="24" height="24" id="frequently-used">
+    </moz-components-factor-icon>
+    Frequently Used</p>
+  <ul class="app-list highlights">
+  </ul>
+ </section>
   <section class="app-grid">
-   <template id="application-template">
-     <li class="app-list__item">
-      <a class="app-tile" target="_blank">
-        <img class="app-tile__logo" role="presentation" >
-      </a>
-      <p class="app-tile__name"></p>
-     </li>
-    
-   </template>
-   <ul class="app-list">
+   
+   <p class="app-grid__header">All</p>
+   <ul class="app-list all">
    </ul>
   </section>
 {% endblock %}
