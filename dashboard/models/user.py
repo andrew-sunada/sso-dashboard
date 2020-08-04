@@ -1,6 +1,7 @@
 """User class that governs maniuplation of session['userdata']"""
 import logging
 import time
+import json
 from faker import Faker
 
 from dashboard.models import alert
@@ -17,29 +18,13 @@ class User(object):
         self.userinfo = session.get("userinfo")
         self.idvault_info = session.get("idvault_userinfo")
 
-    def email(self):
-        try:
-            email = self.userinfo.get("email")
-        except Exception as e:
-            logger.error(
-                "The email attribute does no exists falling back to OIDC Conformant: {}.".format(
-                    e
-                )
-            )
-            email = self.userinfo.get("https://sso.mozilla.com/claim/emails")[0][
-                "emails"
-            ]
-        return email
-
     def apps(self, app_list):
         """Return a list of the apps a user is allowed to see in dashboard."""
         authorized_apps = {"apps": []}
-
         for app in app_list["apps"]:
             if self._is_valid_yaml(app):
                 if self._is_authorized(app):
                     authorized_apps["apps"].append(app)
-
         return authorized_apps.get("apps", [])
 
     @property
@@ -48,7 +33,6 @@ class User(object):
             picture_url = self.idvault_info.get("picture")
         else:
             picture_url = None
-
         return picture_url
 
     def group_membership(self):
@@ -93,10 +77,27 @@ class User(object):
             return ""
         except AttributeError:
             return ""
+    @property      
+    def email(self):
+        try:
+            return self.idvault_info.get("primaryEmail", "")
+        except KeyError:
+            return ""
+        except AttributeError:
+            return ""
+    @property
+    def username(self):
+        """Return user username."""
+        try:
+            return self.idvault_info.get("username", "")
+        except KeyError:
+            return ""
+        except AttributeError:
+            return ""
 
     def user_identifiers(self):
         """Construct a list of potential user identifiers to match on."""
-        return [self.email(), self.userinfo["sub"]]
+        return [self.email, self.userinfo["sub"]]
 
     @property
     def alerts(self):
@@ -161,14 +162,21 @@ class User(object):
         except Exception:
             return False
 
+    def to_dict(self):
+        return {
+            "firstName":self.first_name,
+            "lastName":self.last_name,
+            "username": self.username,
+            "avatar":self.avatar,
+            "alerts":self.alerts,
+            "email":self.email,
+        }
 
 class FakeUser(object):
     def __init__(self, app_config):
         """Constructor takes user session."""
         self.app_config = app_config
 
-    def email(self):
-        return fake.email()
 
     def apps(self, app_list):
         authorized_apps = {"apps": []}
@@ -192,6 +200,12 @@ class FakeUser(object):
 
     @property
     def last_name(self):
+        return fake.last_name()
+    @property
+    def email(self):
+        return fake.email
+    @property
+    def username(self):
         return fake.last_name()
 
     @property

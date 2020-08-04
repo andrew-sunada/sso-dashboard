@@ -87,6 +87,10 @@ dashboard_sass = Bundle("css/dashboard.scss", filters="scss")
 dashboard_css = Bundle(dashboard_sass, filters="cssmin", output="css/gen/dashboard.css")
 assets.register("css_dashboard", dashboard_css)
 
+menu_sass = Bundle("css/menu.scss", filters="scss")
+menu_css = Bundle(menu_sass, filters="cssmin", output="css/gen/menu.css")
+assets.register("css_menu", menu_css)
+
 # Hack to support serving .svg
 mimetypes.add_type("image/svg+xml", ".svg")
 
@@ -216,10 +220,10 @@ def dashboard():
     Rules(userinfo=session["userinfo"], request=request).run()
 
     user = User(session, config.Config(app).settings)
+    
     apps = user.apps(Application(app_list.apps_yml).apps)
-
     return render_template(
-        "dashboard.html", config=app.config, user=user, apps=apps, alerts=None
+        "dashboard.html", config=app.config, user=user.to_dict(), apps=apps, alerts=None
     )
 
 

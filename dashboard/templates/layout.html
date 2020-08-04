@@ -15,14 +15,10 @@
     {% endassets %}
     <link rel="shortcut icon" href="/static/img/favicon.ico" />
     <script src="/static/factor-ui/moz-components.js"></script>
-    {% assets "js_dashboard" %}
-    <script src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-
     <script>
       window._RawSSODashboardApps = JSON.parse('{{apps|tojson}}');
       window._SSOLogoPrefix = '{{ config.CDN }}/images/';
-      console.log("found apps: ", window._RawSSODashboardApps);
+      window._SSOUser = JSON.parse('{{user|tojson}}');
     </script>
   </head>
   <body>
@@ -33,12 +29,48 @@
         <link href="{{ ASSET_URL }}" rel="stylesheet" />
         {% endassets %}
       </div>
-        <a class="sso-logo" slot="logo"href="/">
+        <a class="sso-logo" slot="logo" href="/">
           <img
             src="/static/img/mozilla.svg"
             class="sso-logo__image"
           />
         </a>
+        <moz-components-factor-profile-nav 
+          slot="profile"
+          show-menu="true"
+          avatar-image-url="{{user.avatar}}"
+          avatar-username="{{user.firstName}} {{user.lastName}}"
+          first-name="{{user.firstName}}"
+          last-name="{{user.lastName}}"
+          primary-email="{{user.email}}"
+          logout-link="/logout"
+         >
+         <div slot="styles">
+          {% assets "css_menu" %}
+          <link href="{{ ASSET_URL }}" rel="stylesheet" />
+          {% endassets %}
+         </div>
+         <div class="menu-content" slot="menu-content">
+           <ul class="menu-items">
+             <li class="menu-items__link">
+               <moz-components-factor-user-menu-item text="My Profile" url="https://people.mozilla.org/e/" icon="log-out">
+              </moz-components-factor-user-menu-item>
+            </li>
+            <li class="menu-items__link">
+              <moz-components-factor-user-menu-item text="Notifications" url="/notifications" icon="dashboard">
+             </moz-components-factor-user-menu-item>
+           </li>
+           <li class="menu-items__link">
+            <moz-components-factor-user-menu-item text="Manage Auto-Login" url="/autologin-settings" icon="sliders">
+           </moz-components-factor-user-menu-item>
+         </li>
+           </ul>
+           <footer class="menu-content__footer">
+            <moz-components-factor-user-menu-item text="Logout" url="/logout" icon="log-out"></moz-components-factor-user-menu-item>
+           </footer>
+           
+         </div>
+        </moz-components-factor-profile-nav>
     </moz-components-factor-header>
     <!-- <div class="mui-appbar">
       <div class="mui-col-sm-2 mui-col-xs-5 mui--text-right">
@@ -137,5 +169,9 @@
     {% assets "js_all" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %} {% block extra_js %}{% endblock %}
+    {% assets "js_dashboard" %}
+    <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
   </body>
 </html>

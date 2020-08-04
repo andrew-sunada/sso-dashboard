@@ -41,6 +41,12 @@ class TestUser(object):
         assert f_name == ''
         assert l_name == ''
 
+    def test_email(self):
+        f_email = self.u.email
+
+        assert f_email == ''
+
+
     def test_user_identifiers(self):
         assert len(self.u.user_identifiers()) == 2
 
